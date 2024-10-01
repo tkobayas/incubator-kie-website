@@ -1,48 +1,47 @@
 ---
 id: verify
-title: Verify
-sidebar_position: 0
+title: How to verify
+sidebar_position: 1
 ---
 
-To verify a release candidate, the following checklist could be used:
+# Verify the release artifacts
+
+Following is the basic check items for the release artifacts.
 
 - [ ] Download links are valid.
-- [ ] Checksums and signatures.
-- [ ] LICENSE/NOTICE files exist.
-- [ ] No unexpected binary files.
-- [ ] All source files have ASF headers.
-- [ ] Can compile from source.
+- [ ] Checksums and PGP signatures are valid.
+- [ ] Source code distributions have correct names matching the current release.
+- [ ] LICENSE and NOTICE files are correct.
+- [ ] All files have license headers if necessary.
+- [ ] No unlicensed compiled archives bundled in source archive.
 
-:::note
+For detailed check list, please refer to the [official check list](https://cwiki.apache.org/confluence/display/INCUBATOR/Incubator+Release+Checklist)
 
-It is NOT necessary to run all checks to cast a vote for a release candidate.
 
-However, you should clearly state which checks you did. The release manager needs to ensure that each check was done.
+## Download the candidate version
 
-:::
-
-## Download links are valid
-
-To verify the release candidate, you need to download the release candidate from the [dist](https://dist.apache.org/repos/dist/dev/kie/) directory.
-
-Use the following command to download all artifacts, replace `"${release_version}-${rc_version}"` with the version ID of the version to be released:
-
-```shell
-svn co https://dist.apache.org/repos/dist/dev/kie/${release_version}-${rc_version}/
+```bash
+#If there is svn locally, you can clone to the local
+svn co https://dist.apache.org/repos/dist/dev/incubator/kie/${release_version}-${rc_version}/
+# You can download the material file directly
+wget https://dist.apache.org/repos/dist/dev/incubator/kie/${release_version}-${rc_version}/xxx.xxx
 ```
 
 ## Checksums and signatures
 
-The release candidate should have a checksum and signature file.
+The release candidate artificas should have a checksum and signature file.
 
 For example, if the release candidate is `10.0.0-rc1`, the checksum and signature file should be:
 
 ```
-https://dist.apache.org/repos/dist/dev/kie/10.0.0-rc1/apache-kie-10.0.0-rc1-src.tar.gz.sha512
-https://dist.apache.org/repos/dist/dev/kie/10.0.0-rc1/apache-kie-10.0.0-rc1-src.tar.gz.asc
+https://dist.apache.org/repos/dist/dev/incubator/kie/10.0.0-rc1/incubator-kie-10.0.0-rc1-sources.zip.sha512
+
+https://dist.apache.org/repos/dist/dev/incubator/kie/10.0.0-rc1/incubator-kie-10.0.0-rc1-sources.zip.asc
 ```
 
 ### Verify checksums and signatures
+
+#### GnuPG setup
 
 GnuPG is recommended here. It can be installed with the following command:
 
@@ -54,17 +53,17 @@ yum install gnupg
 brew install gnupg
 ```
 
-Firstly, import the KIE release manager's public key:
+Firstly, import the  Apache KIE Automated Release Signing public key:
 
 ```shell
-curl https://downloads.apache.org/kie/KEYS > KEYS # Download KEYS
+curl https://downloads.apache.org/incubator/kie/KEYS > KEYS
 gpg --import KEYS # Import KEYS to local
 ```
 
 Then, trust the public key:
 
 ```shell
-gpg --edit-key <KEY-used-in-this-version> # Edit the key
+gpg --edit-key kie
 ```
 
 It will enter the interactive mode, use the following command to trust the key:
@@ -89,48 +88,36 @@ Please decide how far you trust this user to correctly verify other users' keys
 
 Select `5` to trust the key ultimately.
 
+#### How to verify the signatures
+
 Next verify signature:
 ```bash
-for i in *.tar.gz; do echo $i; gpg --verify $i.asc $i; done
+for i in *.{tar.gz,zip,vsix}; do echo $i; gpg --verify $i.asc $i; done
 ```
 
 If something like the following appears, it means the signature is correct:
 ```bash
-apache-kie-incubating-10.0.0-src.tar.gz
-gpg: Signature made Wed 17 Apr 2024 11:49:45 PM CST using RSA key ID 5E580BA4
-gpg: checking the trustdb
-gpg: 3 marginal(s) needed, 1 complete(s) needed, PGP trust model
-gpg: depth: 0  valid:   1  signed:   0  trust: 0-, 0q, 0n, 0m, 0f, 1u
-gpg: Good signature from "here"
+incubator-kie-10.0.0-rc1-sources.zip
+gpg: Signature made Fri Sep 27 15:53:27 2024 EDT
+gpg:                using RSA key 1384A644F9BFA0F54C84488C3B0DD7480424A676
+gpg: Good signature from "Apache KIE Automated Release Signing <private@kie.apache.org>" [ultimate]
 ```
 
 Then verify checksum:
 ```bash
-for i in *.tar.gz; do echo $i; sha512sum --check  $i.sha512; done
+for i in *.{tar.gz,zip,vsix}; do echo $i; sha512sum --check $i.sha512; done
 ```
 
 It should output something like:
 ```bash
-apache-kie-incubating-10.0.0-src.tar.gz
-apache-kie-incubating-10.0.0-src.tar.gz: OK
+incubator-kie-10.0.0-rc1-sources.zip
+incubator-kie-10.0.0-rc1-sources.zip: OK
 ```
 
 ## Check the file content of the source package
 
-Unzip `apache-kie-${release_version}-${rc_version}-src.tar.gz` and check the follows:
+Unzip `apache-kie-${release_version}-${rc_version}-sources.zip` and check the follows:
 
-- LICENSE and NOTICE files are correct for the repository.
+- LICENSE and NOTICE files are correct for each subfolder.
 - All files have ASF license headers if necessary.
-- Building is OK.
-
-## Check the Maven artifacts of kie-java
-
-Download the artifacts from `https://repository.apache.org/content/repositories/orgapachekie-${maven_artifact_number}/`.
-
-You can check the follows:
-
-- Checksum of JARs match the bundled checksum file.
-- Signature of JARs match the bundled signature file.
-- JARs is reproducible locally. This means you can build the JARs on your machine and verify the checksum is the same with the bundled one.
-
-The reproducibility requires the same JDK distribution and the same Maven distribution. You should use [Eclipse Temurin JDK 17](https://adoptium.net/temurin/releases/?version=17) and Maven 3.9.6.
+- You are able to [build from source](build).
