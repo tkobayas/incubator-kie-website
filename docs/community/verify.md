@@ -63,7 +63,7 @@ gpg --import KEYS # Import KEYS to local
 Then, trust the public key:
 
 ```shell
-gpg --edit-key kie
+gpg --edit-key "Apache KIE Automated Release Signing"
 ```
 
 It will enter the interactive mode, use the following command to trust the key:
