@@ -23,8 +23,8 @@ For detailed check list, please refer to the [official check list](https://cwiki
 ```bash
 #If there is svn locally, you can clone to the local
 svn co https://dist.apache.org/repos/dist/dev/incubator/kie/${release_version}-${rc_version}/
-# You can download the material file directly
-wget https://dist.apache.org/repos/dist/dev/incubator/kie/${release_version}-${rc_version}/xxx.xxx
+# Or you can just download all the artifacts directly
+wget -r -np -nd -A "*" https://dist.apache.org/repos/dist/dev/incubator/kie/${release_version}-${rc_version}/
 ```
 
 ## Checksums and signatures
@@ -63,7 +63,7 @@ gpg --import KEYS # Import KEYS to local
 Then, trust the public key:
 
 ```shell
-gpg --edit-key "Apache KIE Automated Release Signing"
+gpg --edit-key private@kie.apache.org
 ```
 
 It will enter the interactive mode, use the following command to trust the key:
@@ -103,6 +103,8 @@ gpg:                using RSA key 1384A644F9BFA0F54C84488C3B0DD7480424A676
 gpg: Good signature from "Apache KIE Automated Release Signing <private@kie.apache.org>" [ultimate]
 ```
 
+#### How to verify the checksums
+
 Then verify checksum:
 ```bash
 for i in *.{tar.gz,zip,vsix}; do echo $i; sha512sum --check $i.sha512; done
@@ -112,6 +114,27 @@ It should output something like:
 ```bash
 incubator-kie-10.0.0-rc1-sources.zip
 incubator-kie-10.0.0-rc1-sources.zip: OK
+```
+
+#### How to verify if the container images are valid
+
+Then verify container images:
+```bash
+for i in *image.tar.gz; do echo $i; docker load -q -i $i && echo "OK" || echo "Error"; done
+```
+
+It should output something like:
+```bash
+incubator-kie-10.0.0-rc1-serverless-logic-web-tools-swf-dev-mode-image.tar.gz
+Loaded image: apache/incubator-kie-serverless-logic-web-tools-swf-dev-mode:10.0.0
+OK
+```
+
+Errors would look something like:
+```bash
+incubator-kie-10.0.0-rc1-sonataflow-devmode-image.tar.gz
+open /var/lib/docker/tmp/docker-import-2603585138/repositories: no such file or directory
+Error
 ```
 
 ## Check the file content of the source package

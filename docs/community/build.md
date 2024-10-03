@@ -99,7 +99,7 @@ We'll build each of these components individually.
 ```bash
 cd incubator-kie-drools
 git init .
-mvn clean install -DskipTests -Dfull
+mvn clean install -DskipTests -Dfull -Donly.reproducible=true
 ```
 
 **Produced Artifacts:** JARs will be installed to local Maven repository.
@@ -113,7 +113,7 @@ mvn clean install -DskipTests -Dfull
 **Build Commands:**
 ```bash
 cd incubator-kie-optaplanner
-mvn clean install -DskipTests -Dfull
+mvn clean install -DskipTests -Dfull -Donly.reproducible=true
 ```
 
 **Produced Artifacts:** JARs will be installed to local Maven repository.
@@ -127,7 +127,7 @@ mvn clean install -DskipTests -Dfull
 **Build Commands:**
 ```bash
 cd incubator-kie-kogito-runtimes
-mvn clean install -DskipTests -Dfull
+mvn clean install -DskipTests -Dfull -Donly.reproducible=true
 ```
 
 **Produced Artifacts:** JARs will be installed to local Maven repository.
@@ -143,7 +143,7 @@ mvn clean install -DskipTests -Dfull
 **Build Commands:**
 ```bash
 cd incubator-kie-kogito-apps
-mvn clean install -DskipTests -Dfull -Pjitexecutor-native
+mvn clean install -DskipTests -Dfull -Donly.reproducible=true -Pjitexecutor-native
 ```
 
 **Produced Artifacts:** JARs will be installed to local Maven repository.
