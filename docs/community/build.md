@@ -60,7 +60,7 @@ Replace `${release_version}` and `${rc_version}` with the appropriate values. Fo
 
 
 ```bash
-https://dist.apache.org/repos/dist/dev/incubator/kie/10.0.0-rc1/incubator-kie-10.0.0-rc1-sources.zip
+https://dist.apache.org/repos/dist/dev/incubator/kie/10.0.0-rc2/incubator-kie-10.0.0-rc2-sources.zip
 ```
 
 #### Extract the Source Archive
@@ -163,12 +163,12 @@ mvn clean install -DskipTests -Dfull -Donly.reproducible=true -Pjitexecutor-nati
 ```bash
 cd incubator-kie-kogito-images
 cekit --descriptor kogito-base-builder-image.yaml build docker --platform linux/amd64
-make build-image KOGITO_APPS_TARGET_BRANCH=10.0.0-rc1 ignore_test=true image_name=kogito-data-index-ephemeral
-make build-image KOGITO_APPS_TARGET_BRANCH=10.0.0-rc1 ignore_test=true image_name=kogito-data-index-postgresql
-make build-image KOGITO_APPS_TARGET_BRANCH=10.0.0-rc1 ignore_test=true image_name=kogito-jit-runner
-make build-image KOGITO_APPS_TARGET_BRANCH=10.0.0-rc1 ignore_test=true image_name=kogito-jobs-service-allinone
-make build-image KOGITO_APPS_TARGET_BRANCH=10.0.0-rc1 ignore_test=true image_name=kogito-jobs-service-ephemeral
-make build-image KOGITO_APPS_TARGET_BRANCH=10.0.0-rc1 ignore_test=true image_name=kogito-jobs-service-postgresql
+make build-image KOGITO_APPS_TARGET_BRANCH=10.0.0-rc2 ignore_test=true image_name=kogito-data-index-ephemeral
+make build-image KOGITO_APPS_TARGET_BRANCH=10.0.0-rc2 ignore_test=true image_name=kogito-data-index-postgresql
+make build-image KOGITO_APPS_TARGET_BRANCH=10.0.0-rc2 ignore_test=true image_name=kogito-jit-runner
+make build-image KOGITO_APPS_TARGET_BRANCH=10.0.0-rc2 ignore_test=true image_name=kogito-jobs-service-allinone
+make build-image KOGITO_APPS_TARGET_BRANCH=10.0.0-rc2 ignore_test=true image_name=kogito-jobs-service-ephemeral
+make build-image KOGITO_APPS_TARGET_BRANCH=10.0.0-rc2 ignore_test=true image_name=kogito-jobs-service-postgresql
 ```
 
 **Produced Artifacts:** Images will be pushed to the local Container registry.
