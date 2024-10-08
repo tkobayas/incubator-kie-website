@@ -89,6 +89,10 @@ We'll build each of these components individually.
 
 ### 3. Building Individual Components
 
+:::note
+It's recommended to clean the local `~/.m2` repository, because its content will be incorporated in some container images during the build.
+:::
+
 ### 3.1. Drools
 
 **Environment Requirements:**
