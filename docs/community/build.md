@@ -144,6 +144,14 @@ mvn clean install -DskipTests -Dfull -Donly.reproducible=true
 - GraalVM for JDK 17
 - Docker 25+
 
+:::note
+If you're using Podman as a docker api, to build Kogito Apps you'll need to pass this variable
+
+ ```bash
+ -Djib.dockerClient.executable=$(which podman)
+ ```
+:::
+
 **Build Commands:**
 ```bash
 cd incubator-kie-kogito-apps
