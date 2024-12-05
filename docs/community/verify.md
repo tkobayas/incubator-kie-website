@@ -29,7 +29,7 @@ wget -r -np -nd -A "*" https://dist.apache.org/repos/dist/dev/incubator/kie/${re
 
 ## Checksums and signatures
 
-The release candidate artificas should have a checksum and signature file.
+The release candidate artifacts should have a checksum and signature file.
 
 For example, if the release candidate is `10.0.0-rc1`, the checksum and signature file should be:
 
@@ -141,6 +141,12 @@ Error
 
 Unzip `apache-kie-${release_version}-${rc_version}-sources.zip` and check the follows:
 
-- LICENSE and NOTICE files are correct for each subfolder.
-- All files have ASF license headers if necessary.
+- LICENSE and NOTICE files in the root directory are correct.
+- All files have ASF license headers if necessary. Apache Rat helps the verification.
+    - Download the jar: `curl -LO https://repo1.maven.org/maven2/org/apache/rat/apache-rat/0.16.1/apache-rat-0.16.1.jar`
+    - Run `java -jar apache-rat-0.16.1.jar -d . > rat-result.txt`
+    - Review the `rat-result.txt`. `Files with unapproved licenses:` should be one of the followings
+        - Listed in `LICENSE`
+        - Not a source code (e.g. test data, config file)
+        - Generated code
 - You are able to [build from source](build).
