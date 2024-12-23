@@ -204,7 +204,7 @@ yarn add <package-name>
 
 ## DDL Scripts
 
-The zip file containing the DDLs is available in Maven Central [here](https://repo1.maven.org/maven2/org/kie/kogito/kogito-ddl/10.0.0/kogito-ddl-10.0.0-db-scripts.zip).
+The zip file containing the DDLs is available in Maven Central [here](https://repo1.maven.org/maven2/org/kie/kogito/kogito-ddl/10.0.0/kogito-ddl-10.0.0-db-scripts.zip) and [here](https://repo1.maven.org/maven2/org/kie/kie-ddl-runtimes/10.0.0/kie-ddl-runtimes-10.0.0-db-scripts.zip).
 
 ## Maven Artifacts
 
