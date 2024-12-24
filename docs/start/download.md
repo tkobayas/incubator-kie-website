@@ -202,6 +202,9 @@ yarn add <package-name>
 - [@kie-tools-scripts/build-env](https://www.npmjs.com/package/@kie-tools-scripts/build-env)
 - [sonataflow-deployment-webapp](https://www.npmjs.com/package/sonataflow-deployment-webapp)
 
+## DDL Scripts
+
+The zip file containing the DDLs is available in Maven Central [here](https://repo1.maven.org/maven2/org/kie/kogito/kogito-ddl/10.0.0/kogito-ddl-10.0.0-db-scripts.zip) and [here](https://repo1.maven.org/maven2/org/kie/kie-ddl-runtimes/10.0.0/kie-ddl-runtimes-10.0.0-db-scripts.zip).
 
 ## Maven Artifacts
 
