@@ -61,6 +61,12 @@ const config: Config = {
         },
         {
           type: "docSidebar",
+          sidebarId: "examplesSidebar",
+          position: "right",
+          label: "Examples",
+        },
+        {
+          type: "docSidebar",
           sidebarId: "communitySidebar",
           position: "right",
           label: "Community",
@@ -143,6 +149,10 @@ const config: Config = {
             {
               label: "Download",
               to: "/docs/start/download",
+            },
+            {
+              label: "Examples",
+              to: "/docs/examples",
             },
           ],
         },
