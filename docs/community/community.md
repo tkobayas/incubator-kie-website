@@ -44,7 +44,7 @@ When discussing code snippets in emails, ensure:
 
 ## Support
 
-If you are experiencing problems using Camel, there are several channels available to seek help from the community.
+If you are experiencing problems using Apache KIE or one of its components, there are several channels available to seek help from the community.
 
 [Read more](/docs/community/support)
 

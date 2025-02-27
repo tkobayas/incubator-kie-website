@@ -6,7 +6,7 @@ sidebar_position: 1
 
 ## Getting help
 
-If you are experiencing problems using KIE or its components, then please report your problem to our mailing list or the Zulip chat.
+If you are experiencing problems using KIE or one of its components, then please report your problem to our mailing list or the Zulip chat.
 This allows the entire community to help with your problem.
 If indeed a bug has been identified in the KIE software,
 then document the problem in our [Issue Tracker](https://github.com/apache/incubator-kie-issues/issues).
