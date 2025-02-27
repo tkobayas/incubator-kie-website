@@ -1,7 +1,7 @@
 ---
 id: build
 title: Build from Source
-sidebar_position: 2
+sidebar_position: 4
 ---
 
 ### Complete Environment requirements:

@@ -42,6 +42,12 @@ When discussing code snippets in emails, ensure:
 * There are enough import statements to avoid ambiguities.
 
 
+## Support
+
+If you are experiencing problems using Camel, there are several channels available to seek help from the community.
+
+[Read more](/docs/community/support)
+
 ## Issue tracker
 
 We use GitHub Issues to track [all issues](https://github.com/apache/incubator-kie-issues/issues).
