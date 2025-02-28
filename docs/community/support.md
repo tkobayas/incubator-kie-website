@@ -39,7 +39,7 @@ We might also contact you requesting further details as needed.
 
 ### Using deprecated components
 
-Deprecated components or older versions than 10.0.0 are *not* supported and issues such as bugs may not be fixed. We encourage users to migrate away from using any deprecated component and any version prior to 10.0.0.
+Deprecated components or older versions than 10.0.0 are *not* maintained and issues such as bugs may not be fixed. We encourage users to migrate away from using any deprecated component and any version prior to 10.0.0.
 
 ### How to get help
 
