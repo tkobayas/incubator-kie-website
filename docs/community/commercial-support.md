@@ -8,7 +8,7 @@ Apache KIE is a widely used technology. As such, companies have built products a
 
 ### IBM
 
-[IBM](https://ibm.com) offers a supported build of a subset of Apache KIE components as part of [IBM Business Automation Manager Open Editions - BAMOE](https://www.ibm.com/products/business-automation-manager-open-editions), previously named Red Hat Process Automation Manager and Red Hat Decision Manager. BAMOE is an enterprise automation software for workflow and decision management based on Apache KIE technologies offering developer and production support. In addition to enterprise support, IBM provides [consulting](https://www.ibm.com/products/expertlabs), and a [dedicated users community](https://community.ibm.com/community/user/automation/communities/community-home?CommunityKey=6c04b811-cff1-4f31-bb5c-0185982de671).
+[IBM](https://ibm.com) offers a supported build of a subset of Apache KIE components as part of [IBM Business Automation Manager Open Editions](https://www.ibm.com/products/business-automation-manager-open-editions), previously named Red Hat Process Automation Manager and Red Hat Decision Manager. Business Automation Manager Open Editions is an enterprise automation software for workflow and decision management based on Apache KIE technologies offering developer and production support. In addition to enterprise support, IBM provides [consulting](https://www.ibm.com/products/expertlabs), and a [dedicated users community](https://community.ibm.com/community/user/automation/communities/community-home?CommunityKey=6c04b811-cff1-4f31-bb5c-0185982de671).
 
 
 ### Red Hat
