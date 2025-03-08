@@ -1,7 +1,7 @@
 ---
 id: verify
 title: How to verify
-sidebar_position: 1
+sidebar_position: 3
 ---
 
 # Verify the release artifacts
