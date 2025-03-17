@@ -7,14 +7,17 @@ on:
   pull_request:
 
 jobs:
-  deploy:
+  build-docs:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        version: [10.0.x]
     steps:
       - name: Checkout SonataFlow repository
         uses: actions/checkout@v4
         with:
           repository: apache/incubator-kie-kogito-docs
-          ref: 10.0.x
+          ref: ${{ matrix.version }}
           path: sonataflow-docs
 
       - name: Build Sonataflow documentation
@@ -26,7 +29,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           repository: apache/incubator-kie-drools
-          ref: 10.0.x
+          ref: ${{ matrix.version }}
           path: drools
 
       - name: Build Drools documentation
@@ -38,7 +41,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           repository: apache/incubator-kie-docs
-          ref: 10.0.x
+          ref: ${{ matrix.version }}
           path: kogito-docs
 
       - name: Build Kogito documentation
@@ -46,27 +49,55 @@ jobs:
           cd kogito-docs
           mvn -B clean install -Dfull
 
+      - name: Collect built docs
+        run: |
+          mkdir -p docs/${{ matrix.version }}/sonataflow
+          cp -r sonataflow-docs/build/site/* docs/${{ matrix.version }}/sonataflow
+
+          mkdir -p docs/${{ matrix.version }}/drools
+          cp -r drools/drools-docs/target/website/docs/* docs/${{ matrix.version }}/drools
+
+          mkdir -p docs/${{ matrix.version }}/kogito
+          cp -r kogito-docs/doc-content/apache-kie-kogito/target/generated-docs/html_single/* docs/${{ matrix.version }}/kogito
+
+      - name: Upload built docs artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ matrix.version }}
+          path: docs/${{ matrix.version }}
+
+  deploy-website:
+    runs-on: ubuntu-latest
+    needs: build-docs
+    steps:
       - name: Checkout Apache KIE Website repository
         uses: actions/checkout@v4
         with:
           path: incubator-kie-website
 
-      - name: Copy Sonataflow docs to Apache KIE static folder
-        run: |
-          mkdir -p incubator-kie-website/static/sonataflow-docs
-          cp -r sonataflow-docs/build/site/* incubator-kie-website/static/sonataflow-docs
+      - name: Prepare docs folder
+        run: mkdir -p docs
 
-      - name: Copy Drools docs to Apache KIE static folder
-        run: |
-          mkdir -p incubator-kie-website/static/drools-docs
-          cp -r drools/drools-docs/target/website/docs/* incubator-kie-website/static/drools-docs
+      - name: Download built docs artifacts
+        uses: actions/download-artifact@v4
+        with:
+          path: docs
 
-      - name: Copy Kogito docs to Apache KIE static folder
+      - name: Copy docs to website static folder
         run: |
-          mkdir -p incubator-kie-website/static/kogito-docs
-          cp -r kogito-docs/doc-content/apache-kie-kogito/target/generated-docs/html_single/* incubator-kie-website/static/kogito-docs
+          for ver in $(ls docs); do
+            echo "Processing version: $ver"
+            mkdir -p incubator-kie-website/static/docs/$ver/sonataflow
+            cp -r docs/$ver/sonataflow/* incubator-kie-website/static/docs/$ver/sonataflow
 
-      - name : Build Apache Kie Website
+            mkdir -p incubator-kie-website/static/docs/$ver/drools
+            cp -r docs/$ver/drools/* incubator-kie-website/static/docs/$ver/drools
+
+            mkdir -p incubator-kie-website/static/docs/$ver/kogito
+            cp -r docs/$ver/kogito/* incubator-kie-website/static/docs/$ver/kogito
+          done
+
+      - name: Build Apache KIE Website
         run: |
           cd incubator-kie-website
           npm install
