@@ -13,12 +13,27 @@ on:
         default: '10.0.x'
 
 jobs:
+  prepare-matrix:
+    runs-on: ubuntu-latest
+    outputs:
+      versions: ${{ steps.convert.outputs.versions }}
+    steps:
+      - name: Convert versions input to JSON array
+        id: convert
+        run: |
+          # Get the comma-separated versions input
+          versions="${{ github.event.inputs.versions }}"
+          # Convert it to a JSON array. For example, "10.0.x,10.1.x" becomes ["10.0.x","10.1.x"]
+          json_array=$(printf '["%s"]' "$(echo "$versions" | sed 's/,/","/g')")
+          echo "versions=$json_array" >> $GITHUB_OUTPUT
+
   build-docs:
+    needs: prepare-matrix
     runs-on: ubuntu-latest
     # Convert the comma-separated list into a JSON array for the matrix.
     strategy:
       matrix:
-        version: ${{ fromJson(concat('["', replace(github.event.inputs.versions, ',', '","'), '"]')) }}
+        version: ${{ fromJson(needs.prepare-matrix.outputs.versions) }}
     steps:
       - name: Checkout SonataFlow repository
         uses: actions/checkout@v4
