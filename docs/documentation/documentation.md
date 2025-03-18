@@ -8,7 +8,7 @@ sidebar_position: 0
 
 Apache KIE (incubating) provides live documentation for community in two streams.
 
-1. Development stream - built & published nightly from `main` branch. Usage is limited to testing and development. 
+1. Development stream - built & published nightly from `main` branch. Usage is limited to testing and development.
 2. Release stream - built & published after the vote on release candidates passes. We will maintain each released branch until it is deprecated.
 
 ## Source

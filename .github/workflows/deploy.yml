@@ -5,41 +5,13 @@ on:
     branches:
       - main
   pull_request:
-  workflow_dispatch:
-    inputs:
-      versions:
-        description: 'Comma-separated documentation versions to deploy (e.g. "10.0.x,10.1.x")'
-        required: false
-        default: '10.0.x'
 
 jobs:
-  prepare-matrix:
-    runs-on: ubuntu-latest
-    outputs:
-      versions: ${{ steps.convert.outputs.versions }}
-    steps:
-      - name: Convert versions input to JSON array
-        id: convert
-        shell: bash
-        run: |
-          # If the input is empty (e.g., when triggered by push or PR), use the default value.
-          if [ -z "${{ github.event.inputs.versions }}" ]; then
-            versions="10.0.x"
-          else
-            versions="${{ github.event.inputs.versions }}"
-          fi
-          echo "Versions input: $versions"
-          # Convert the comma-separated list to a JSON array.
-          json_array=$(printf '["%s"]' "$(echo "$versions" | sed 's/,/","/g')")
-          echo "JSON array: $json_array"
-          echo "versions=$json_array" >> $GITHUB_OUTPUT
-
   build-docs:
-    needs: prepare-matrix
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        version: ${{ fromJson(needs.prepare-matrix.outputs.versions) }}
+        version: [10.0.x]
     steps:
       - name: Checkout SonataFlow repository
         uses: actions/checkout@v4
@@ -140,10 +112,10 @@ jobs:
           path: incubator-kie-website/build
           overwrite: true
 
-#      - name: Deploy Apache KIE Website
-#        uses: peaceiris/actions-gh-pages@v3
-#        if: github.event_name != 'pull_request'
-#        with:
-#          github_token: ${{ secrets.GITHUB_TOKEN }}
-#          publish_dir: incubator-kie-website/build
-#          publish_branch: deploy
+      - name: Deploy Apache KIE Website
+        uses: peaceiris/actions-gh-pages@v3
+        if: github.event_name != 'pull_request'
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: incubator-kie-website/build
+          publish_branch: deploy
