@@ -18,7 +18,7 @@ jobs:
     # Convert the comma-separated list into a JSON array for the matrix.
     strategy:
       matrix:
-        version: ${{ fromJson('["' + replace(github.event.inputs.versions, ',', '","') + '"]') }}
+        version: ${{ split(github.event.inputs.versions, ',') }}
     steps:
       - name: Checkout SonataFlow repository
         uses: actions/checkout@v4
