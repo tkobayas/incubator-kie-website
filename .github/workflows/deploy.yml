@@ -20,11 +20,18 @@ jobs:
     steps:
       - name: Convert versions input to JSON array
         id: convert
+        shell: bash
         run: |
-          # Get the comma-separated versions input
-          versions="${{ github.event.inputs.versions }}"
-          # Convert it to a JSON array. For example, "10.0.x,10.1.x" becomes ["10.0.x","10.1.x"]
+          # If the input is empty (e.g., when triggered by push or PR), use the default value.
+          if [ -z "${{ github.event.inputs.versions }}" ]; then
+            versions="10.0.x"
+          else
+            versions="${{ github.event.inputs.versions }}"
+          fi
+          echo "Versions input: $versions"
+          # Convert the comma-separated list to a JSON array.
           json_array=$(printf '["%s"]' "$(echo "$versions" | sed 's/,/","/g')")
+          echo "JSON array: $json_array"
           echo "versions=$json_array" >> $GITHUB_OUTPUT
 
   build-docs:
