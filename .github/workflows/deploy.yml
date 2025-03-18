@@ -108,7 +108,7 @@ jobs:
         run: mkdir -p docs
 
       - name: Download built docs artifacts
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v2
         with:
           path: docs
           all: true
