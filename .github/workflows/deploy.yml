@@ -111,6 +111,7 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           path: docs
+          all: true
 
       - name: Copy docs to website static folder
         run: |
