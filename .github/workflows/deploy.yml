@@ -108,10 +108,9 @@ jobs:
         run: mkdir -p docs
 
       - name: Download built docs artifacts
-        uses: actions/download-artifact@v2
+        uses: actions/download-artifact@v4
         with:
           path: docs
-          all: true
 
       - name: Copy docs to website static folder
         run: |
