@@ -4,6 +4,8 @@ title: How to verify
 sidebar_position: 3
 ---
 
+> **Note:** This page is currently being updated for the 10.1.0 release verification procedure.
+
 # Verify the release artifacts
 
 Following is the basic check items for the release artifacts.
@@ -145,7 +147,7 @@ Unzip `apache-kie-${release_version}-${rc_version}-sources.zip` and check the fo
 - All files have ASF license headers if necessary. Apache Rat helps the verification.
     - In the root directory of the sources package,
     - Download the jar: `curl -LO https://repo1.maven.org/maven2/org/apache/rat/apache-rat/0.16.1/apache-rat-0.16.1.jar`
-    - Run `java -jar apache-rat-0.16.1.jar -d . -E .rat-excludes-combined > rat-result.txt` (It takes a few minutes)
+    - Run `java -jar apache-rat-0.16.1.jar -d . -E .rat-excludes-combined > rat-result.txt` (It takes a few minutes. `.rat-excludes-combined` has been introduced since 10.1.0 release candidates)
     - Review the `rat-result.txt`. `Files with unapproved licenses:` should be one of the followings
         - Listed in `LICENSE`
         - Not a source code (e.g. test data, config file)
