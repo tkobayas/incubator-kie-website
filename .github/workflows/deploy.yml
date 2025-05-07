@@ -25,17 +25,35 @@ jobs:
           cd sonataflow-docs
           npm run install-build
 
-      - name: Checkout Drools repository
+      - name: Checkout Drools repository (10.0.x)
+        if: ${{ matrix.version == '10.0.x' }}
         uses: actions/checkout@v4
         with:
           repository: apache/incubator-kie-drools
           ref: ${{ matrix.version }}
           path: drools
 
-      - name: Build Drools documentation
+      - name: Checkout Drools repository (>= 10.1.x)
+        if: ${{ matrix.version != '10.0.x' }}
+        uses: actions/checkout@v4
+        with:
+          repository: apache/incubator-kie-docs
+          ref: ${{ matrix.version }}
+          path: drools
+
+      - name: Build Drools documentation (10.0.x)
+        if: ${{ matrix.version == '10.0.x' }}
         run: |
           cd drools/drools-docs
           mvn -B clean install
+
+      - name: Build Drools documentation (>= 10.1.x)
+        if: ${{ matrix.version != '10.0.x' }}
+        run: |
+          cd drools/drools-docs
+          mvn -B clean install
+
+# Ahh, messy for kogito...
 
       - name: Checkout Kogito documentation repository
         uses: actions/checkout@v4
