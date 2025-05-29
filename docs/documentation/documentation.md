@@ -1,6 +1,6 @@
 ---
 id: documentation
-title: Documetation
+title: Documentation
 sidebar_position: 0
 ---
 
@@ -17,6 +17,6 @@ The source of our documentation is hosted at Github, across multiple repositorie
 
 See the instructions on how to contribute and build from source by examining the link below.
 
-* [Drools Documentation](https://github.com/apache/incubator-kie-drools/tree/main/drools-docs)
-* [Kogito Documentation](https://github.com/apache/incubator-kie-docs/tree/main/doc-content/apache-kie-kogito)
+* [Drools Documentation](https://github.com/apache/incubator-kie-docs/tree/main/drools-docs)
+* [Kogito Documentation](https://github.com/apache/incubator-kie-docs/tree/main/kogito-docs)
 * [SonataFlow Documentation](https://github.com/apache/incubator-kie-kogito-docs/tree/main)
