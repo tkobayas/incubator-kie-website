@@ -56,7 +56,7 @@ Replace `10.1.0` and `${rc_version}` with the appropriate values. For example:
 
 
 ```bash
-https://dist.apache.org/repos/dist/dev/incubator/kie/10.0.0-rc1/apache-kie-10.1.0-incubating-sources.zip
+https://dist.apache.org/repos/dist/dev/incubator/kie/10.1.0-rc1/apache-kie-10.1.0-incubating-sources.zip
 ```
 
 #### Extract the Source Archive
