@@ -1,6 +1,6 @@
 ---
-id: build-10.1
-title: Build from Source - 10.1.0
+id: build
+title: Build from Source
 sidebar_position: 4
 ---
 
