@@ -1,7 +1,7 @@
 ---
 id: download_10_1_0
-title: 10.1.0 (latest)
-sidebar_position: 0
+title: 10.1.0
+sidebar_position: 1
 ---
 
 # Downloads for 10.1.0
