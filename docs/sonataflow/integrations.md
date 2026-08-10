@@ -1,13 +1,10 @@
 ---
-id: sonataflow
-title: SonataFlow
-sidebar_position: 0
+id: integrations
+title: Integrations
+sidebar_position: 1
 ---
 
-# SonataFlow
-
-
-SonataFlow is a tool for building cloud-native workflow applications. You can use it to do the services and events orchestration and choreography. Currently, with SonataFlow you can integrate with services and events in your architecture using:
+Currently, with SonataFlow you can integrate with services and events in your architecture using:
 
 * CloudEvents. Ideal for an Event-Driven architecture where the services are ready to consume and produce events working in a more reactive way. 
 * Sync or Async REST services invocations via OpenAPI/AsyncAPI. There are options even to directly call a REST service in the architecture or ecosystem. Either async or sync methods are supported depending on your requirements. 

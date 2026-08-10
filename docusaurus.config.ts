@@ -79,6 +79,7 @@ const config: Config = {
             to: "/jbpm/getting-started",
           },
           { from: "/components/kogito", to: "/kogito/" },
+          { from: "/components/sonataflow", to: "/sonataflow/" },
         ],
 
         // The docs plugin's `routeBasePath` was changed from "/docs" to "/",
