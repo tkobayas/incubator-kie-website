@@ -72,6 +72,7 @@ const config: Config = {
             to: "/drools/upgrade-recipe",
           },
           { from: "/components/drools/drools_videos", to: "/drools/videos" },
+          { from: "/components/optaplanner", to: "/optaplanner/" },
         ],
 
         // The docs plugin's `routeBasePath` was changed from "/docs" to "/",
