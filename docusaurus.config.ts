@@ -59,6 +59,21 @@ const config: Config = {
     [
       "@docusaurus/plugin-client-redirects",
       {
+        // Each component used to live under /components/<name> in the docs
+        // tree. They now have their own sections at the site root, so the old
+        // paths are redirected to keep inbound links working.
+        redirects: [
+          { from: "/components/drools", to: "/drools/" },
+          { from: "/components/drools/drools_books", to: "/drools/books" },
+          { from: "/components/drools/drools_dmn", to: "/drools/dmn" },
+          { from: "/components/drools/drools_papers", to: "/drools/papers" },
+          {
+            from: "/components/drools/drools_upgrade_recipe",
+            to: "/drools/upgrade-recipe",
+          },
+          { from: "/components/drools/drools_videos", to: "/drools/videos" },
+        ],
+
         // The docs plugin's `routeBasePath` was changed from "/docs" to "/",
         // moving every docs page from `/docs/<x>` to `/<x>`. This plugin
         // emits a static HTML redirect at `/docs/<x>` for each existing
