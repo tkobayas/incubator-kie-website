@@ -27,11 +27,3 @@ Conformance level 3: every feature in the OMG standard.
 
 Reason over streams of events in the same engine: temporal operators, sliding
 time and length windows, and event expiration.
-
-## Learn more
-
-- [DMN](/drools/dmn) — what DMN is, and what the Drools DMN engine supports.
-- [Books](/drools/books) — books on Drools itself, and on business rules and decision modelling more broadly.
-- [Papers](/drools/papers) — academic papers and theses, from Forgy's original Rete paper onwards.
-- [Videos](/drools/videos) — presentations and playlists, including the DMN engine series and the workbench archive.
-- [Upgrade recipe](/drools/upgrade-recipe) — what to change in your code when moving between Drools versions.

@@ -11,7 +11,7 @@ Everything you need to build and run your first Kogito service.
 1. **An IDE** — [VS Code](https://code.visualstudio.com/Download) (preferred),
    [IntelliJ IDEA](https://www.jetbrains.com/idea/download/) or
    [Eclipse](https://www.eclipse.org/downloads/).
-2. **JDK 17** — with `JAVA_HOME` set; [Temurin](https://adoptium.net/) works
+2. **JDK 21** (preferred) or JDK 17 — [Temurin](https://adoptium.net/) works
    well. Optionally [GraalVM](https://www.graalvm.org/) for native compilation.
 3. **Maven 3.9+** — [Apache Maven](https://maven.apache.org/). The exact
    versions behind a release are in the

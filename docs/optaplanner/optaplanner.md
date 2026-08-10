@@ -36,9 +36,3 @@ OptaPlanner supports:
 OptaPlanner is open source software, released under the Apache License. It is
 written in 100% pure Java™, runs on any JVM and is available in the Maven
 Central repository.
-
-## Learn more
-
-- [Use cases](/optaplanner/use-cases) — the planning problems OptaPlanner optimizes.
-- [Code example](/optaplanner/code-example) — solving a problem from Java code.
-- [Compatibility](/optaplanner/compatibility) — the languages, frameworks and platforms OptaPlanner works with.
