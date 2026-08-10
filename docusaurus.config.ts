@@ -80,6 +80,7 @@ const config: Config = {
           },
           { from: "/components/kogito", to: "/kogito/" },
           { from: "/components/sonataflow", to: "/sonataflow/" },
+          { from: "/components/tools", to: "/tools/" },
         ],
 
         // The docs plugin's `routeBasePath` was changed from "/docs" to "/",
@@ -119,10 +120,19 @@ const config: Config = {
           label: "About",
         },
         {
-          type: "docSidebar",
-          sidebarId: "componentsSidebar",
-          position: "right",
+          type: "dropdown",
           label: "Components",
+          position: "right",
+          // Kept in the same order, and with the same labels, as the cards in
+          // src/components/HomepageComponents.
+          items: [
+            { label: "Drools", to: "/drools/" },
+            { label: "OptaPlanner", to: "/optaplanner/" },
+            { label: "jBPM", to: "/jbpm/" },
+            { label: "Kogito", to: "/kogito/" },
+            { label: "SonataFlow", to: "/sonataflow/" },
+            { label: "Tools", to: "/tools/" },
+          ],
         },
         {
           type: "docSidebar",
@@ -199,6 +209,17 @@ const config: Config = {
     footer: {
       style: "dark",
       links: [
+        {
+          title: "Components",
+          items: [
+            { label: "Drools", to: "/drools" },
+            { label: "OptaPlanner", to: "/optaplanner" },
+            { label: "jBPM", to: "/jbpm" },
+            { label: "Kogito", to: "/kogito" },
+            { label: "SonataFlow", to: "/sonataflow" },
+            { label: "Tools", to: "/tools" },
+          ],
+        },
         {
           title: "Get involved",
           items: [
