@@ -73,6 +73,11 @@ const config: Config = {
           },
           { from: "/components/drools/drools_videos", to: "/drools/videos" },
           { from: "/components/optaplanner", to: "/optaplanner/" },
+          { from: "/components/jbpm", to: "/jbpm/" },
+          {
+            from: "/components/jbpm/getting_started",
+            to: "/jbpm/getting-started",
+          },
         ],
 
         // The docs plugin's `routeBasePath` was changed from "/docs" to "/",

@@ -1,16 +1,15 @@
 ---
 id: jbpm
 title: jBPM
+sidebar_label: Overview
 sidebar_position: 0
 ---
 
-# jBPM
-
-
+jBPM is a toolkit for building business applications to help automate business
+processes and decisions. See the [jBPM manuals](/documentation) for the latest
+features and for earlier releases.
 
 ## What is jBPM?
-
-jBPM is a toolkit for building business applications to help automate business processes and decisions.
 
 jBPM originates from BPM (Business Process Management) but it has evolved to enable users to pick their own path in business automation. It provides various capabilities that simplify and externalize business logic into reusable assets such as cases, processes, decision tables and more.
 
@@ -32,7 +31,7 @@ jBPM is open source software, released under the Apache License 2.0. It is writt
 
 ## Cloud-native?
 
-Looking for a pure cloud-native process automation solution, specifically targeted towards creating intelligent business applications in the cloud? Take a look at [Kogito](/components/kogito), based on jBPM.
+Looking for a pure cloud-native process automation solution, specifically targeted towards creating intelligent business applications in the cloud? Take a look at [Kogito](/kogito), based on jBPM.
 
 
 ## What does jBPM do?
@@ -57,17 +56,7 @@ jBPM supports adaptive and dynamic processes that require flexibility to model c
 
 jBPM is also not just an isolated process engine. Complex business logic can be modeled as a combination of business processes with business rules and complex event processing. jBPM can be combined with the Drools project to support one unified environment that integrates these paradigms where you model your business logic as a combination of processes, rules and events.
 
-## Documentation
-Please refer to [Documentation](/documentation) for the latest features.
 
 ## Slides
-These slides are viewable in your browser:
 
-[Show the jBPM presentations](http://www.slideshare.net/krisverlaenen/presentations)
-
-
-## Books
-[![Mastering jBPM6]( mastering_jbpm6.png 'Mastering jBPM6')](http://kverlaen.blogspot.be/2015/07/book-mastering-jbpm6.html)
-[![Mastering jBPM6]( jbpm6_developer_guide.png 'jBPM6 Developer Guide')](http://kverlaen.blogspot.be/2014/09/jbpm6-developer-guide.html)
-[![Mastering jBPM6]( jbpm5_developer_guide.png 'jBPM5 Developer Guide')](http://kverlaen.blogspot.be/2012/12/book-jbpm5-developer-guide.html)
-[![Mastering jBPM6]( efficient_business_process_management.png 'Efficient Business Process Management')](http://www.schabell.org/2018/03/book-launced-effective-business-process-management-with-jboss-bpm.html)
+[Kris Verlaenen's jBPM presentations](http://www.slideshare.net/krisverlaenen/presentations), viewable in your browser.

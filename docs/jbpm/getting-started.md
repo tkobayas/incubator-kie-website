@@ -1,10 +1,9 @@
 ---
-id: jbpm_getting_started
+id: getting-started
 title: Getting Started
-sidebar_position: 0
+sidebar_position: 1
 ---
 
-# Business Applications - Getting Started
 ## Overview
 
 Business application can be defined as an automated solution, built with selected frameworks and capabilities that implements business functions and/or business problems. Capabilities can be (among others):
