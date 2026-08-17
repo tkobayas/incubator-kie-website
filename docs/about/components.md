@@ -11,7 +11,7 @@ one stands on its own, and they are designed to work together.
 
 The rule engine at the core of KIE. Started in 2001 as an open source rule
 engine and grew into a full business rule management system, today covering DRL
-rules and the DMN decision standard.
+rules and the [DMN](https://www.omg.org/spec/DMN/) decision standard.
 
 ## [OptaPlanner](/optaplanner)
 
@@ -21,8 +21,9 @@ own right.
 
 ## [jBPM](/jbpm)
 
-A workflow engine for long-running business processes, covering BPMN, case
-management and human tasks. From jBPM 5 onwards it was rebuilt around the same
+A workflow engine for long-running business processes, covering
+[BPMN 2.0](https://www.omg.org/spec/BPMN/2.0/), case management and human
+tasks. From jBPM 5 onwards it was rebuilt around the same
 knowledge core as Drools.
 
 ## [Kogito](/kogito)
@@ -53,4 +54,3 @@ years, some of which grew into projects of their own:
 - [TrustyAI](https://github.com/trustyai-explainability), for explainability and
   auditing of AI-augmented decision services, which continues as an independent
   open source project.
-- SonataFlow, which grew out of Kogito.

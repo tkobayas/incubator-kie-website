@@ -1,7 +1,7 @@
 ---
 id: vscode
 title: VS Code extensions
-sidebar_position: 2
+sidebar_position: 3
 ---
 
 The VS Code extensions put the editors inside your IDE, working directly on the

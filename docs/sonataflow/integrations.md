@@ -1,7 +1,7 @@
 ---
 id: integrations
 title: Integrations
-sidebar_position: 1
+sidebar_position: 2
 ---
 
 Currently, with SonataFlow you can integrate with services and events in your architecture using:

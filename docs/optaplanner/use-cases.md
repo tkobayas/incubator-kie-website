@@ -1,7 +1,7 @@
 ---
 id: use-cases
 title: Use cases
-sidebar_position: 1
+sidebar_position: 2
 ---
 
 OptaPlanner optimizes plans and schedules with _hard constraints_ and _soft

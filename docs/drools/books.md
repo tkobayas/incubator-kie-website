@@ -1,7 +1,7 @@
 ---
 id: books
 title: Books
-sidebar_position: 2
+sidebar_position: 4
 ---
 
 Books about Drools, and about business rules and decision modelling more

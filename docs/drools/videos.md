@@ -1,7 +1,7 @@
 ---
 id: videos
 title: Videos
-sidebar_position: 4
+sidebar_position: 6
 ---
 
 For general KIE community videos, playlists, and live streams, see the

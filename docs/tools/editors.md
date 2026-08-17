@@ -1,7 +1,7 @@
 ---
 id: editors
 title: Standalone editors
-sidebar_position: 3
+sidebar_position: 4
 ---
 
 Embeddable builds of the editors, published to npm, for putting a modeller

@@ -4,23 +4,48 @@ title: Guides
 sidebar_position: 2
 ---
 
-You have gone through the [Get Started guides](/kogito/get-started). You are
+You have gone through the [Get started guides](/kogito/get-started). You are
 now ready to dive into specific topic guides.
 
-## Tooling
+## Process services
 
-### [Kogito BPMN and DMN modelers](pathname:///docs/10.2.x/kogito/#con-kogito-modelers_kogito-creating-running)
+### [Developing process services with Kogito](pathname:///docs/10.2.x/kogito/#chap-kogito-developing-process-services)
 
-Kogito provides extensions and application graphical modelers that you can use
-to design Business Process Model and Notation (BPMN) process models and
-Decision Model and Notation (DMN) decision models for your Kogito services.
+As a developer of business processes, you can use Kogito business automation to
+develop process services using
+[Business Process Model and Notation (BPMN) 2.0](https://www.omg.org/spec/BPMN/2.0/)
+models. BPMN 2.0 process models are graphical representations of the steps
+required to achieve a business goal. You can design your BPMN 2.0 processes
+with the Kogito BPMN modeler in VS Code or import existing BPMN 2.0 processes
+into your Kogito projects for deployment and execution.
+
+### [BPMN 2.0 support in Kogito](pathname:///docs/10.2.x/kogito/#con-bpmn_kogito-developing-process-services)
+
+Business Process Model and Notation (BPMN) 2.0 is a standard established by the
+[Object Management Group (OMG)](https://www.omg.org/) for describing and
+modeling business processes.
+
+### [Persistence in Kogito services](pathname:///docs/10.2.x/kogito/#con-persistence_kogito-developing-process-services)
+
+Kogito supports runtime persistence for preserving process data in your
+services across application restarts. Kogito persistence is based on key-value
+storage to persist data, such as active process nodes and process instance
+variables.
+
+### [Kogito Management Console](pathname:///docs/10.2.x/kogito/#con-management-console_kogito-developing-process-services)
+
+The Kogito Management Console is a user interface for viewing the state of all
+available Kogito services and managing process instances. You can use the
+Management Console to view process, subprocess, and node instance details,
+abort process instances, and view domain-specific process data.
 
 ## Decision services
 
 ### [Developing decision services with Kogito](pathname:///docs/10.2.x/kogito/#collection-kogito-developing-decision-services)
 
 As a developer of business decisions, you can use Kogito business automation to
-develop decision services using Decision Model and Notation (DMN) models,
+develop decision services using
+[Decision Model and Notation (DMN)](https://www.omg.org/spec/DMN/) models,
 Drools Rule Language (DRL) rules, XLS or XLSX spreadsheet decision tables, or a
 combination of all three methods.
 
@@ -55,36 +80,6 @@ scalable decision management architecture. The decision engine is the Kogito
 component that stores, processes, and evaluates data to execute business rules
 and to reach the decisions that you define.
 
-## Process services
-
-### [Developing process services with Kogito](pathname:///docs/10.2.x/kogito/#chap-kogito-developing-process-services)
-
-As a developer of business processes, you can use Kogito business automation to
-develop process services using Business Process Model and Notation (BPMN) 2.0
-models. BPMN process models are graphical representations of the steps required
-to achieve a business goal. You can design your BPMN processes with the Kogito
-BPMN modeler in VS Code or import existing BPMN processes into your Kogito
-projects for deployment and execution.
-
-### [BPMN 2.0 support in Kogito](pathname:///docs/10.2.x/kogito/#con-bpmn_kogito-developing-process-services)
-
-Business Process Model and Notation (BPMN) 2.0 is a standard established by the
-Object Management Group (OMG) for describing and modeling business processes.
-
-### [Persistence in Kogito services](pathname:///docs/10.2.x/kogito/#con-persistence_kogito-developing-process-services)
-
-Kogito supports runtime persistence for preserving process data in your
-services across application restarts. Kogito persistence is based on key-value
-storage to persist data, such as active process nodes and process instance
-variables.
-
-### [Kogito Management Console](pathname:///docs/10.2.x/kogito/#con-management-console_kogito-developing-process-services)
-
-The Kogito Management Console is a user interface for viewing the state of all
-available Kogito services and managing process instances. You can use the
-Management Console to view process, subprocess, and node instance details,
-abort process instances, and view domain-specific process data.
-
 ## Environment configuration
 
 ### [Configuring Kogito supporting services and runtime capabilities](pathname:///docs/10.2.x/kogito/#chap-kogito-configuring)
@@ -102,5 +97,5 @@ Kogito search, insight, and management capabilities.
 ### [Using the Kogito Jobs Service](pathname:///docs/10.2.x/kogito/#con-jobs-service_kogito-configuring)
 
 Kogito provides a Jobs Service for scheduling Business Process Model and
-Notation (BPMN) process events that are configured to be executed at a
+Notation (BPMN) 2.0 process events that are configured to be executed at a
 specified time. These time-based events in a process model are known as jobs.

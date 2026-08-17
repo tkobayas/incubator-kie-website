@@ -6,7 +6,9 @@ const config: Config = {
   title: "Apache KIE (incubating)",
   tagline:
     "The home of the most popular business automation open-source technologies",
-  favicon: "img/favicon.ico",
+  // The favicon is set in src/theme/Root.tsx, not here: pages under a
+  // component hotsite fly that component's logo instead of the site icon, and
+  // with both set two `rel="icon"` links are emitted, the last one winning.
 
   // Set the production url of your site here
   url: "https://kie.apache.org/",
@@ -76,8 +78,9 @@ const config: Config = {
           { from: "/components/jbpm", to: "/jbpm/" },
           {
             from: "/components/jbpm/getting_started",
-            to: "/jbpm/getting-started",
+            to: "/jbpm/get-started",
           },
+          { from: "/jbpm/getting-started", to: "/jbpm/get-started" },
           { from: "/components/kogito", to: "/kogito/" },
           { from: "/components/sonataflow", to: "/sonataflow/" },
           { from: "/components/tools", to: "/tools/" },

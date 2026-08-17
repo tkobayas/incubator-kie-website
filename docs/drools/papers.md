@@ -1,7 +1,7 @@
 ---
 id: papers
 title: Papers
-sidebar_position: 3
+sidebar_position: 5
 ---
 
 Academic papers and theses about rule engines and decision automation, from Forgy's original Rete paper onwards.

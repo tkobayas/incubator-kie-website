@@ -1,7 +1,7 @@
 ---
 id: chrome
 title: Chrome extensions
-sidebar_position: 4
+sidebar_position: 5
 ---
 
 The Chrome extensions add a graphical editor to GitHub itself, so a model in a

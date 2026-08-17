@@ -1,7 +1,7 @@
 ---
 id: consoles
 title: Dev consoles
-sidebar_position: 5
+sidebar_position: 6
 ---
 
 Development consoles for inspecting a running service: the processes and tasks

@@ -1,7 +1,7 @@
 ---
 id: kie-sandbox
 title: Web — KIE Sandbox
-sidebar_position: 1
+sidebar_position: 2
 ---
 
 [KIE Sandbox](https://sandbox.kie.org) runs the BPMN, DMN, Test Scenario and DRL

@@ -1,7 +1,7 @@
 ---
 id: code-example
 title: Code example
-sidebar_position: 2
+sidebar_position: 4
 ---
 
 To optimize a problem from Java™ code, add the `optaplanner-core` jar and call

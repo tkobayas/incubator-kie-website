@@ -1,11 +1,13 @@
 import useBaseUrl from "@docusaurus/useBaseUrl";
-import Heading from "@theme/Heading";
 
+import { Feature, FeatureGrid } from "@site/src/components/ComponentBanner";
 import styles from "./styles.module.css";
 
 type Highlight = {
   title: string;
   image: string;
+  /** Multiplier on the base illustration size; taller cards carry bigger art. */
+  imageScale?: number;
   body: React.ReactNode;
 };
 
@@ -13,18 +15,20 @@ const HIGHLIGHTS: Highlight[] = [
   {
     title: "Kogito ergo cloud",
     image: "/img/kogito/homepage_graphic_1",
+    imageScale: 2,
     body: (
       <p>
         Kogito is designed from ground up to run at scale on cloud
         infrastructure. By taking advantage of the latest technologies (Quarkus,
-        Knative, etc.), you get amazingly fast boot times and instant scaling on
-        orchestration platforms like Kubernetes.
+        Spring Boot, etc.), you get amazingly fast boot times and instant
+        scaling on orchestration platforms like Kubernetes.
       </p>
     ),
   },
   {
     title: "Kogito ergo domain",
     image: "/img/kogito/homepage_graphic_2",
+    imageScale: 1.5,
     body: (
       <p>
         Kogito adapts to your business domain rather than the other way around.
@@ -37,6 +41,7 @@ const HIGHLIGHTS: Highlight[] = [
   {
     title: "Kogito ergo power",
     image: "/img/kogito/homepage_graphic_3",
+    imageScale: 2,
     body: (
       <>
         <p>
@@ -54,33 +59,54 @@ const HIGHLIGHTS: Highlight[] = [
   },
 ];
 
-function HighlightColumn({ highlight }: { highlight: Highlight }): JSX.Element {
+function HighlightCard({
+  highlight,
+  mediaSide,
+}: {
+  highlight: Highlight;
+  mediaSide: "left" | "right";
+}): JSX.Element {
   const image = useBaseUrl(`${highlight.image}.png`);
   const image2x = useBaseUrl(`${highlight.image}@2x.png`);
   return (
-    <div className={styles.highlight}>
-      <img
-        className={styles.image}
-        src={image}
-        srcSet={`${image} 1x, ${image2x} 2x`}
-        alt=""
-        aria-hidden="true"
-      />
-      <Heading as="h2" className={styles.title}>
-        {highlight.title}
-      </Heading>
+    <Feature
+      title={highlight.title}
+      mediaSide={mediaSide}
+      media={
+        <img
+          className={styles.image}
+          style={
+            {
+              "--kie-highlight-image-scale": highlight.imageScale ?? 1,
+            } as React.CSSProperties
+          }
+          src={image}
+          srcSet={`${image} 1x, ${image2x} 2x`}
+          alt=""
+          aria-hidden="true"
+        />
+      }
+    >
       {highlight.body}
-    </div>
+    </Feature>
   );
 }
 
-/** The three "Kogito ergo ..." columns, embedded in the Kogito overview doc. */
+/**
+ * The three "Kogito ergo ..." cards, embedded in the Kogito overview doc.
+ * Same cards as the other component overviews, but stacked full width with
+ * the illustrations alternating side to side down the page.
+ */
 export default function KogitoHighlights(): JSX.Element {
   return (
-    <div className={styles.grid}>
-      {HIGHLIGHTS.map((highlight) => (
-        <HighlightColumn key={highlight.title} highlight={highlight} />
+    <FeatureGrid stacked>
+      {HIGHLIGHTS.map((highlight, index) => (
+        <HighlightCard
+          key={highlight.title}
+          highlight={highlight}
+          mediaSide={index % 2 === 0 ? "left" : "right"}
+        />
       ))}
-    </div>
+    </FeatureGrid>
   );
 }
