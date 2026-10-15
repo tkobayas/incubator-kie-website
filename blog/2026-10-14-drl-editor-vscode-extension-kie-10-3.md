@@ -53,7 +53,7 @@ Completion, navigation and diagnostics all work across file boundaries. The exte
 
 ### Formatter
 
-`Format Document` and `Format Selection` rewrite a `.drl` file into a canonical shape. The formatter is built on the same ANTLR4 parser the engine uses, so it only formats files it can verify will re-parse correctly — it refuses a file entirely rather than writing partial or ambiguous output. Formatting is idempotent.
+`Format Document` and `Format Selection` rewrite a `.drl` file into a canonical shape. The formatter is built on the ANTLR4 `DRL10` parser (see [Which parser the editor uses](#which-parser-the-editor-uses)), so it only formats files it can verify will re-parse correctly — it refuses a file entirely rather than writing partial or ambiguous output. Formatting is idempotent.
 
 Key defaults (all configurable):
 
@@ -64,7 +64,31 @@ Key defaults (all configurable):
 | `alignDeclarations` | `true` | `declare` fields as aligned columns |
 | `normalizeTerminators` | `true` | Adds `;` to `import`, removes from `global` |
 
-A `// @formatter:off` / `// @formatter:on` pair freezes a region verbatim. The formatter is also available as a standalone CLI for pre-commit hooks and CI.
+A `// @formatter:off` / `// @formatter:on` pair freezes a region verbatim. The formatter is also available as a standalone CLI (to be built from the source code as required) for pre-commit hooks and CI.
+
+## Which parser the editor uses
+
+Drools 10 ships two DRL parsers. The engine compiles with the legacy `DRL6` parser by default; the new ANTLR4-based `DRL10` parser is opt-in, enabled with `-Ddrools.drl.antlr4.parser.enabled=true`, and accepts a slimmer syntax ([apache/incubator-kie#6220](https://github.com/apache/incubator-kie/issues/6220)). The DRL Editor parses with `DRL10`, so its syntax errors, lint and formatter already follow the language Drools is moving to, while compile diagnostics on save come from the project's own engine and its default parser.
+
+For most rule sets the two parsers agree. Where a rule set still uses syntax that `DRL10` drops, the editor reports a parse error (`no viable alternative`) at that spot even though the build succeeds, and the formatter refuses the file. The dropped constructs are:
+
+| Construct | Deprecated form | Replacement |
+|---|---|---|
+| Half constraint | `age > 18 && < 65` | `age > 18 && age < 65` |
+| Patterns joined with `&&` / `\|\|` | `not( A() && B() )` | `not( A() and B() )` |
+| Annotation after an LHS `and` / `or` | `A() or @Annot B()` | Move or drop the annotation |
+| `agenda-group` | `agenda-group "g"` | `ruleflow-group "g"` |
+| Custom operator without its prefix | `addresses supersetOf $a.addresses` | `addresses ##supersetOf $a.addresses` |
+
+`&&` and `||` between constraints inside a pattern, as in `Person( age > 18 && age < 65 )`, are unaffected.
+
+### The migration path
+
+Drools is introducing `DRL10` gradually ([apache/incubator-kie#6221](https://github.com/apache/incubator-kie/issues/6221)). Today the legacy parser logs a deprecation warning when it meets dropped syntax. `DRL10` is planned to become the default parser in a later release, and the legacy `DRL6` parser to be removed in Drools 12, after which the deprecated syntax no longer compiles.
+
+To check a rule set now, build it once with `-Ddrools.drl.antlr4.parser.enabled=true`; the constructs it rejects are the ones the editor flags. Migrating them early keeps the editor, the formatter and the build in agreement, and removes the work from a future upgrade.
+
+The editor includes a deprecated-syntax lint, which replaces the raw parse errors with a warning that names the construct, offers a quick fixes, and reads custom operators from the project's `META-INF/kie.properties.conf` so that `##id` is accepted as the engine accepts it. Its severity is set with `drools.lsp.lint.deprecated`.
 
 ## Requirements
 
@@ -76,7 +100,7 @@ A `// @formatter:off` / `// @formatter:on` pair freezes a region verbatim. The f
 
 1. **Install the extension** from the VS Code Marketplace: search for *DRL Editor* by `kie-group`.
 2. **Open your project** — the extension activates automatically when a `.drl` file is opened.
-3. **Check the status bar** — the active file group is shown at the bottom. If the extension picks up your `kmodule.xml` correctly, no additional configuration is needed.
+3. **Check the status bar** — the active file group is shown at the bottom. If the extension picks up your `kmodule.xml` correctly, no additional configuration is needed. If a DRL file belongs to several groups, a selection list lets you pick one.
 4. **Try a save** — if Drools is on the classpath, compile diagnostics appear in the Problems panel within a few seconds.
 
 For teams that want to commit group definitions without a `kmodule.xml`, place a `drl-lsp-kbases.json` at the workspace root. The README has the full schema.
@@ -93,7 +117,7 @@ A large share of the work that made this extension possible came from Daniel Cla
 
 ## What's next
 
-The 10.3.0 release establishes the foundation. We'll continue improving the extension based on community feedback — if something is missing or behaving unexpectedly, opening an issue at [GitHub Issues](https://github.com/apache/incubator-kie-tools/issues) is the best way to shape what comes next. The formatter defaults in particular are open for discussion in [kie-tools#3709](https://github.com/apache/incubator-kie-tools/issues/3709).
+The 10.3.0 release establishes the foundation. We'll continue improving the extension based on community feedback — if something is missing or behaving unexpectedly, opening an issue at [GitHub Issues](https://github.com/apache/incubator-kie-tools/issues) is the best way to shape what comes next.
 
 ## Join the conversation
 
