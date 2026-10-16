@@ -11,7 +11,7 @@ Apache KIE 10.3.0 ships the first official release of the **DRL Editor** — a V
 
 ## Why a dedicated DRL extension?
 
-DRL files have always been text files, and for years "support" in an editor meant little more than syntax colouring — if you were lucky. Completion, navigation, and error feedback all required running the build just to know whether a rule compiled. For teams with large rule sets this friction adds up: a rule that refers to a renamed Java class, a missing `end`, a typo in a declared type — all silent until `mvn test`.
+While a few DRL-aware editors have existed over the years, they have either offered limited language support or fallen behind on maintenance. In practice, completion, navigation, and error feedback all required running the build just to know whether a rule compiled. For teams with large rule sets this friction adds up: a rule that refers to a renamed Java class, a missing `end`, a typo in a declared type — all silent until `mvn test`.
 
 The DRL Editor closes that gap. It connects VS Code to a full Language Server that indexes both the DRL workspace and the project's Java types, so the feedback loop tightens considerably.
 
@@ -44,8 +44,8 @@ Three layers of error reporting work together:
 2. **Lint diagnostics** — missing `end`, unbalanced parentheses, missing constraint separators, unknown type references (with a "Did you mean?" quick-fix for likely typos).
 3. **Compile diagnostics** — on save, the file's group is compiled using the Drools engine on the project's own classpath and the compiler's messages appear in the Problems panel. This gives you the same errors the build would produce, without leaving the editor.
 
-![Lint diagnostic with a typo quick-fix](/img/blogs/drl-editor-problem.png)
-*A typo in a type name (`Employer` instead of `Employee`) is caught immediately with a "Did you mean?" suggestion — no save, no build required.*
+![Lint diagnostic with a typo quick-fix](/img/blogs/drl-editor-problem-quickfix.png)
+*A typo in a type name (`Employer` instead of `Employee`) is caught immediately — the Quick Fix menu offers "Replace with 'Employee'" in one click.*
 
 Compile diagnostics require `drools-compiler` and `drools-mvel` on the classpath — a project that already compiles rules at runtime has them. A workspace without them gets syntax and lint feedback, just not compile feedback.
 
