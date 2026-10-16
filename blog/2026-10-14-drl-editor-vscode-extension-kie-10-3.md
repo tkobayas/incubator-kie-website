@@ -101,7 +101,7 @@ The editor includes a deprecated-syntax lint, which replaces the raw parse error
 1. **Install the extension** from the VS Code Marketplace: search for *DRL Editor* by `kie-group`.
 2. **Open your project** — the extension activates automatically when a `.drl` file is opened.
 3. **Check the status bar** — the active file group is shown at the bottom. If the extension picks up your `kmodule.xml` correctly, no additional configuration is needed. If a DRL file belongs to several groups, a selection list lets you pick one.
-4. **Try a save** — if Drools is on the classpath, compile diagnostics appear in the Problems panel within a few seconds.
+4. **Try a save** — build the project once (e.g. `mvn compile`) so its classes are available, then save a `.drl` file. If Drools is on the classpath, compile diagnostics appear in the Problems panel within a few seconds.
 
 For teams that want to commit group definitions without a `kmodule.xml`, place a `drl-lsp-kbases.json` at the workspace root. The README has the full schema.
 
